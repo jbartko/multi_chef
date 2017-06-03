@@ -1,0 +1,9 @@
+Metrics/BlockLength:
+  Enabled: false
+
+Metrics/LineLength:
+  IgnoredPatterns:
+    - =~
+
+Style/FormatString:
+  EnforcedStyle: percent

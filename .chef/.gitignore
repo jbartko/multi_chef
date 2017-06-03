@@ -1,0 +1,5 @@
+*
+!.gitignore
+!hosts
+!knife_override.sample.rb
+!knife.rb
