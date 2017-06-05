@@ -26,8 +26,7 @@ options = {
 }
 
 repo_path = nil
-repo_path_template = '%{home}/hosts/%{host}/%{org}/' \
-                     "#{opt_u unless options[:mode] == 'multi'}".chomp('/')
+repo_path_template = '%{home}/hosts/%{host}/%{org}/%{user}'
 
 parser = OptionParser.new do |opts|
   opts.banner = 'Usage: multi_chef.rb [-h|--help]'
@@ -108,7 +107,8 @@ parser = OptionParser.new do |opts|
     repo_path = repo_path_template % {
       home: options[:home],
       host: options[:api_host],
-      org: options[:org]
+      org: options[:org],
+      user: options[:mode] == 'single' ? opt_u : ''
     }
 
     client_key_path = "#{options[:home]}/.chef/hosts/#{options[:api_host]}"
@@ -120,7 +120,7 @@ parser = OptionParser.new do |opts|
     begin
       raise IOError, "No client key #{client_key}" unless File.exist?(client_key)
       raise IOError, "No repo path #{repo_path}" unless Dir.exist?(repo_path)
-    rescue Exception::IOError
+    rescue IOError
       STDERR.puts $ERROR_INFO.to_s
       STDERR.puts "\nCreate the directory structure with:"
       STDERR.puts "\tmkdir -p " \
@@ -167,7 +167,8 @@ end
 repo_path = repo_path_template % {
   home: options[:home],
   host: options[:api_host],
-  org: options[:org]
+  org: options[:org],
+  user: options[:mode] == 'single' ? options[:user] : ''
 }
 
 multi_chef_path = File.expand_path(__FILE__)
