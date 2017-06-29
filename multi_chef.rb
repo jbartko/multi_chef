@@ -173,7 +173,7 @@ repo_path = repo_path_template % {
 
 multi_chef_path = File.expand_path(__FILE__)
 multi_chef_dir = File.dirname(multi_chef_path)
-
+Dir.mkdir "#{ENV['HOME']}/.berkshelf" unless ::Dir.exist?("#{ENV['HOME']}/.berkshelf")
 berkshelf_config_path = "#{ENV['HOME']}/.berkshelf/config.json"
 berkshelf_config = ::File.open(berkshelf_config_path, 'w')
 begin
