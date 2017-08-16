@@ -35,7 +35,7 @@ __Warning!__ In addition to the above environmental variables, `multi_chef.rb` a
 
 ## Getting Started
 
-There are two usage modes for multi-chef: __single__ and __multi__.
+There are two usage modes for multi_chef: __single__ and __multi__.
 
 ### Single user install
 
@@ -50,7 +50,7 @@ Single mode is default and intended for use on non-shared systems (i.e. a person
 1.  Issue the following eval statement, substituting your own values:
 
     ```bash
-    eval "$(~/multi-chef/multi_chef.rb -a CHEF_HOST -o CHEF_ORG -u CHEF_USER)"
+    eval "$(~/multi_chef/multi_chef.rb -a CHEF_HOST -o CHEF_ORG -u CHEF_USER)"
     ```
 
     This should result in output similar to:
@@ -78,7 +78,7 @@ Optionally, place an eval statement in your ~/.bashrc after the ChefDK shell ini
 ```bash
 # .bashrc snippet...
 eval "$(chef shell-init bash)"
-eval "$(~/multi-chef/multi_chef.rb -a DEFAULT_CHEF_HOST -o DEFAULT_CHEF_ORG -u DEFAULT_CHEF_USER)"
+eval "$(~/multi_chef/multi_chef.rb -a DEFAULT_CHEF_HOST -o DEFAULT_CHEF_ORG -u DEFAULT_CHEF_USER)"
 # ...
 ```
 
@@ -123,7 +123,7 @@ Multi mode is intended to be used on a shared multi-user system such as a Knife 
       export CHEF_USER=${CHEF_USER//./_}
 
       # source Multi Chef
-      eval "$(/opt/multi-chef/multi_chef.rb -m multi -a COMPANY_CHEF_HOST -o COMPANY_DEFAULT_CHEF_ORG -u $CHEF_USER)"
+      eval "$(/opt/multi_chef/multi_chef.rb -m multi -a COMPANY_CHEF_HOST -o COMPANY_DEFAULT_CHEF_ORG -u $CHEF_USER)"
     fi
 
     ```
